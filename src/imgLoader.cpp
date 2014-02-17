@@ -7,6 +7,18 @@ imgLoader::imgLoader() {
 
 //--------------------------------------------------------------
 imgLoader::~imgLoader() {
+    //releaseCurrentTexture();
+    
+    delete currTexture;
+    delete nextTexture;
+    //if(!to_delete_img)
+    //1    delete to_delete_img;
+    
+    currTexture=NULL;
+    nextTexture=NULL;
+	to_delete_img = NULL;
+
+    
     delete [] textures;
     textures = NULL;
 }
@@ -37,6 +49,7 @@ void imgLoader::fetchTextureNames(string path) {
 }
 //--------------------------------------------------------------
 void imgLoader::start(string pathToImages) {
+    
 	imgLoaded = false;
 
 	ofDisableArbTex();
@@ -44,6 +57,7 @@ void imgLoader::start(string pathToImages) {
     currTexture=NULL;
     nextTexture=NULL;
 	to_delete_img = NULL;
+    
     startThread(true, false);  // blocking, verbose
 }
 
@@ -77,6 +91,13 @@ void imgLoader::loadNextTexture() {
 		imgLoaded=true;
 }
 
+bool imgLoader::isCurrentImage() {
+    if(to_delete_img == NULL)
+        return false;
+    else
+        return true;
+}
+
 ofImage * imgLoader::getNextTexture() {
     if(imgLoaded){
 		to_delete_img = currTexture;
@@ -90,6 +111,7 @@ ofImage * imgLoader::getNextTexture() {
 }
 
 void imgLoader::releaseCurrentTexture(){
+    if(to_delete_img != NULL)
 	   delete to_delete_img;
 }
 

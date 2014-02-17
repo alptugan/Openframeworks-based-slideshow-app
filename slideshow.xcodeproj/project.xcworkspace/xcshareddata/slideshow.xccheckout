@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E5C470BA-7056-4685-BEB7-2767CE3870C2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>slideshow</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>41D23D2E-2CB5-4852-B9C9-E8544E575228</key>
+		<string>https://github.com/alptugan/Openframeworks-based-slideshow-app.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>slideshow.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>41D23D2E-2CB5-4852-B9C9-E8544E575228</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/alptugan/Openframeworks-based-slideshow-app.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>41D23D2E-2CB5-4852-B9C9-E8544E575228</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>41D23D2E-2CB5-4852-B9C9-E8544E575228</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Openframeworks-based-slideshow-app</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -12,6 +12,7 @@ class testApp : public ofBaseApp{
     void draw();
     
     void keyPressed  (int key);
+    void keyReleased (int key);
     void mouseMoved(int x, int y );
     void mouseDragged(int x, int y, int button);
     void mousePressed(int x, int y, int button);
@@ -27,7 +28,8 @@ class testApp : public ofBaseApp{
     ofTexture temp_cur_texture;
     ofTexture temp_next_texture;
     
-    imgLoader   loader;
+    imgLoader   *loader;
+    imgLoader   *loader2;
     bool        loadNextImg;
     bool transitionEnded;
     bool transitionStarted;

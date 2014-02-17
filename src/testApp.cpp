@@ -1,23 +1,12 @@
 #include "testApp.h"
 
-char **files= new char*[16];
-
 
 void testApp::setup() {
     ofBackground(0,0,0);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	//Loading config file
-	//_chdir("../Media");
-    
-	int *params= new int[16];
-	for (int i=0;i<16;i++) files[i]=new char[255];
-	
-	ofLog(OF_LOG_VERBOSE,"Step: %d",params[0]);
-	ofLog(OF_LOG_VERBOSE,"Directory: %s",files[0]);
-	ofLog(OF_LOG_VERBOSE,"Transition: %s",files[1]);
-	//Loading shader
-    
-    loader.start(files[0]);
+    loader = new imgLoader();
+    loader->start("");
     ofSetVerticalSync(true);
 	currImage=NULL;
 	nextImg=NULL;
@@ -26,7 +15,6 @@ void testApp::setup() {
 	transitionEnded = false;
     firstImage = false;
 	progress = 0;
-	step = (float)params[0] / 100;
     step = 0.01;
     temp_cur_texture.allocate(1024,1024,GL_RGB); // CHANGE FOR THE SIZE OF THE IMAGES ...
 	temp_next_texture.allocate(1024,1024,GL_RGB);
@@ -79,7 +67,7 @@ void testApp::update(){
 	//if (currImage->width != 1024) centerX = 512 - (currImage->width / 2);
 	if(currImage != NULL){
 		if (loadNextImg) {
-            ofImage* temp_nextImg = loader.getNextTexture();
+            ofImage* temp_nextImg = loader->getNextTexture();
             nextImg = temp_nextImg;
             loadNextImg=false;
 		}
@@ -90,7 +78,7 @@ void testApp::update(){
                 transitionStarted = false;
                 ofLog(OF_LOG_VERBOSE,"Animation ended, swapping");
                 currImage=nextImg;
-                loader.releaseCurrentTexture();
+                loader->releaseCurrentTexture();
                 transitionEnded = false;
                 progress = 0;
             }
@@ -98,7 +86,7 @@ void testApp::update(){
 	} else {
         
 		//first time i load a picture
-		ofImage* temp_nextImg = loader.getNextTexture();
+		ofImage* temp_nextImg = loader->getNextTexture();
 		currImage = temp_nextImg;
        
         
@@ -147,6 +135,48 @@ void testApp::keyPressed(int key) {
         loadNextImg=true;
         transitionStarted = true;
     }
+    
+}
+
+void testApp::keyReleased(int key) {
+    
+    loader->stop();
+    loader->waitForThread();
+    delete loader;
+    
+    loader = NULL;
+    
+    loader = new imgLoader();
+    
+    if (key == '1') {
+        
+        loader->start("user1");
+        /*
+
+        cout << "current : ";
+        cout <<  loader.lock() << endl;
+
+        */
+        
+        
+    }
+    
+    if(key == '2') {
+        
+        
+        loader->start("user2");
+
+    }
+    
+    
+    currImage=NULL;
+    nextImg=NULL;
+    loadNextImg=false;
+    transitionStarted = false;
+    transitionEnded = false;
+    firstImage = false;
+    progress = 0;
+
 }
 
 

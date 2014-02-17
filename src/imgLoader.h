@@ -17,9 +17,8 @@ class imgLoader : public ofThread {
         void    fetchTextureNames(string path);
         void    loadNextTexture();
         ofImage * getNextTexture();
-        void    goForIt();
 		void    releaseCurrentTexture();
-
+    bool    isCurrentImage();
     private:
         ofDirectory  dirList;
         
